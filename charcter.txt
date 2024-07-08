@@ -1,0 +1,58 @@
+{
+    "name": "Gandalf",
+    "race": "Maia",
+    "characterClass": "Mago",
+    "level": 20,
+    "attributes": {
+        "strength": 10,
+        "dexterity": 14,
+        "constitution": 12,
+        "intelligence": 18,
+        "wisdom": 20,
+        "charisma": 16
+    },
+    "abilities": [
+        {
+            "name": "Ataque Corpo a Corpo",
+            "description": "Cajado"
+        }
+    ],
+    "spells": [
+        {
+            "name": "Explosão de Fogo",
+            "description": "Causa dano de fogo aos inimigos."
+        },
+        {
+            "name": "Relâmpago",
+            "description": "Um raio de energia que atinge um único alvo."
+        },
+        {
+            "name": "Escudo Arcano",
+            "description": "Cria uma barreira mágica que aumenta a defesa."
+        },
+        {
+            "name": "Cura",
+            "description": "Restaura pontos de vida para um aliado."
+        }
+    ],
+    "equipment": {
+        "weapon": "Cajado de Magia",
+        "armor": "Robe de Mago",
+        "magicItems": ["Anel de Poder", "Livro de Magias Antigas"]
+    },
+    "maxHp": 120,
+    "specialAbilities": [
+        {
+            "name": "Visão Noturna",
+            "description": "Pode enxergar no escuro."
+        },
+        {
+            "name": "Imortalidade",
+            "description": "Não envelhece e é imune a doenças."
+        },
+        {
+            "name": "Sabedoria Ancestral",
+            "description": "Bônus em testes de conhecimento e magia."
+        }
+    ]
+}
