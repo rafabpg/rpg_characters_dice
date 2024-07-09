@@ -1,4 +1,6 @@
-package com.rpg.server.character.model;
+package com.rpg.server.modules.character.model;
+
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class CharacterEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
 
     @NotEmpty(message = "Name cannot be empty")
     @Size(max = 50, message = "Name cannot exceed 50 characters")
