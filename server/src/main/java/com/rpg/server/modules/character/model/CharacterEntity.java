@@ -1,7 +1,16 @@
 package com.rpg.server.modules.character.model;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.rpg.server.modules.character.DTO.AbilitiesDTO;
+import com.rpg.server.modules.character.DTO.AttributesDTO;
+import com.rpg.server.modules.character.DTO.EquipmentDTO;
+import com.rpg.server.modules.character.DTO.SpecialAbilities;
+import com.rpg.server.modules.character.DTO.SpellDTO;
+
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,9 +20,11 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @Entity(name = "character")
 public class CharacterEntity {
     
@@ -37,42 +48,26 @@ public class CharacterEntity {
     @Max(value = 100, message = "Level must be less than or equal to 100")
     private int level;
 
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int strength;
+    @Embedded
+    @NotNull(message = "Attributes cannot be null")
+    private AttributesDTO attributes;
 
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int dexterity;
+    @ElementCollection
+    @NotNull(message = "Abilities cannot be null")
+    private List<AbilitiesDTO> abilities;
 
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int constitution;
+    @ElementCollection
+    @NotNull(message = "Spells cannot be null")
+    private List<SpellDTO> spells;
 
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int intelligence;
-
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int wisdom;
-
-    @Min(value = 1, message = "Attribute must be at least 1")
-    @Max(value = 20, message = "Attribute must be less than or equal to 20")
-    private int charisma;
+    @Embedded
+    @NotNull(message = "Equipment cannot be null")
+    private EquipmentDTO equipment;
 
     @Min(value = 1, message = "Max HP must be at least 1")
     private int maxHp;
 
-    @NotNull(message = "Abilities cannot be null")
-    private String[] abilities;
-
-    @NotNull(message = "Spells cannot be null")
-    private String[] spells;
-
-    @NotNull(message = "Equipment cannot be null")
-    private String[] equipment;
-
+    @ElementCollection
     @NotNull(message = "Special abilities cannot be null")
-    private String[] specialAbilities;
+    private List<SpecialAbilities> specialAbilities;
 }
