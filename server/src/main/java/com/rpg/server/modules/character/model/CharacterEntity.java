@@ -24,7 +24,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 @Entity(name = "character")
 public class CharacterEntity {
     
