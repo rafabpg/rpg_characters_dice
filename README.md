@@ -17,11 +17,22 @@ Project that in the backend you can create your RPG characters, and roll the dic
 - `git clone https://github.com/rafabpg/rpg_characters_dice.git`
 
 2️⃣ **Navigate to the Backend**
+
+
 3️⃣ **Initialize dockers containers**
+
+
 - `docker-compose up -d`
+
+  
 4️⃣ **Navigate to front-end React**
+
+
 4️⃣ **Install dependencies**
+
 - `npm install`
+
+  
 5️⃣ **Run the project**
 - `npm run dev`
   
