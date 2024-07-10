@@ -21,8 +21,12 @@ public class CharacterService {
     }
 
     public void deleteCharacter(UUID id) {
-        this.characterRepository.findById(id).ifPresent(characterEntity -> characterRepository.delete(characterEntity));
-        throw new CharacterNotFound();
+        var characterOptional = this.characterRepository.findById(id);
+        if (characterOptional.isPresent()) {
+            this.characterRepository.delete(characterOptional.get());
+        } else {
+            throw new CharacterNotFound();
+        }
     }
 
     public List<CharacterEntity> findAll() {
