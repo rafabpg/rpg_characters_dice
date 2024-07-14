@@ -5,9 +5,9 @@ Project that in the backend you can create your RPG characters, and roll the dic
 ##  💻 To Do
 
 - [ ] Interface to users see theirs characters
-- [ ] Authentication
+- [X] Authentication
 - [ ] Interface to Dice
-- [ ] Possibility to create sessions
+- [X] Possibility to create campains
 
 
 ## 🚀 Getting Start
