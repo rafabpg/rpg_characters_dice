@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -38,6 +41,27 @@ public class CampainController {
         }
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getById(@PathVariable UUID id) {
+        try {
+            var result = this.campainService.findById(id);
+            return ResponseEntity.status(200).body(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
+        }
+    }
+    
+    @GetMapping
+    public ResponseEntity<Object> getByUsername(@RequestHeader(name = "Authorization") String token) {
+       try {
+            var result = this.campainService.findByUsername(token);
+            return ResponseEntity.status(200).body(result);
+       } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
+       }
+    }
+    
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable UUID id) {
