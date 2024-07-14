@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rpg.server.exceptions.CharacterNotFound;
+import com.rpg.server.exceptions.UserNotFound;
 import com.rpg.server.modules.character.model.CharacterEntity;
 import com.rpg.server.modules.character.repository.CharacterRepository;
+import com.rpg.server.modules.user.repository.UserRepository;
 
 @Service
 public class CharacterService {
@@ -16,7 +18,13 @@ public class CharacterService {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public CharacterEntity createCharacter(CharacterEntity character) {
+        this.userRepository.findByUsername(character.getUsernameId()).orElseThrow(
+            () -> new UserNotFound()
+        );
         return this.characterRepository.save(character);
     }
 

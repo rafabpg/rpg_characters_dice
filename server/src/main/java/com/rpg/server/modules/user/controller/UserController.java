@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,21 +37,30 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<Object> getUser(@PathVariable String username) {
+    @GetMapping
+    public ResponseEntity<Object> getUser(@RequestHeader(name = "Authorization") String token) {
         try {
-            var result = this.userService.findByUsername(username);
+            var result = this.userService.findByUsername(token);
             return ResponseEntity.status(200).body(result);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
         }
     }
     
-
-    @DeleteMapping("/{username}")
-    public ResponseEntity<Object> deleteUser(@PathVariable String username) {
+    @GetMapping("/characters")
+    public ResponseEntity<Object> getCharacters(@RequestHeader(name = "Authorization") String token) {
         try {
-            this.userService.deleteUser(username);
+            var result = this.userService.getCharacters(token);
+            return ResponseEntity.status(200).body(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Object> deleteUser(@RequestHeader(name = "Authorization") String token) {
+        try {
+            this.userService.deleteUser(token);
             return ResponseEntity.status(200).body("Deleted sucessfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());

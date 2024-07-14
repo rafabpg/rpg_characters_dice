@@ -3,6 +3,10 @@ package com.rpg.server.modules.character.model;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rpg.server.modules.character.DTO.AbilitiesDTO;
 import com.rpg.server.modules.character.DTO.AttributesDTO;
 import com.rpg.server.modules.character.DTO.EquipmentDTO;
@@ -21,12 +25,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@DynamicUpdate
+@DynamicInsert
 @Entity(name = "character")
 public class CharacterEntity {
     
@@ -73,10 +81,13 @@ public class CharacterEntity {
     @NotNull(message = "Special abilities cannot be null")
     private List<SpecialAbilities> specialAbilities;
 
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "username",insertable = false, updatable = false)
     private UserModel user;
     
+    
     @Column(name = "username")
-    private String username;
+    private String usernameId;
 }

@@ -14,6 +14,6 @@ public interface CharacterRepository  extends JpaRepository<CharacterEntity,UUID
     Optional<CharacterEntity> findById(UUID id);
     List<CharacterEntity> findByRace(String race);
     List<CharacterEntity> findByCharacterClass(String characterClass);
-    List<CharacterEntity> findCharacterEntitiesByUsername(String username);
+    Optional<List<CharacterEntity>> findByUsernameId(String usernameId);
     
 }
