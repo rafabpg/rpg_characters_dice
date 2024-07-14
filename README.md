@@ -1,6 +1,6 @@
 # RPG
 
-Project that in the backend you can create your RPG characters, and roll the dice 
+Project that you can create your RPG characters,Simple Campains and roll the dice 
 
 ##  💻 To Do
 
