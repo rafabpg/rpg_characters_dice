@@ -35,6 +35,9 @@ Project that in the backend you can create your RPG characters, and roll the dic
   
 5️⃣ **Run the project**
 - `npm run dev`
+
+
+## To Acess the [documentation](http://localhost:8080/swagger-ui/index.html) - Run the Backend 
   
 ### 📋 Prerequisites:
 
