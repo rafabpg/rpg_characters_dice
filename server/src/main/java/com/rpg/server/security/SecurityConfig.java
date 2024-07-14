@@ -17,6 +17,11 @@ import org.springframework.web.filter.CorsFilter;
 @EnableMethodSecurity
 public class SecurityConfig {
     
+    private static final String[] SWAGGER_LIST = {
+        "/swagger-ui/**",
+        "/v3/api-docs/**",
+        "/swagger-resource/**",
+    };
 
     @Autowired
     private SecurityFilter securityFilter;
@@ -25,7 +30,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf ->csrf.disable()).authorizeHttpRequests(
             auth -> {
-                auth.requestMatchers("/user").permitAll().requestMatchers("/auth/login").permitAll();
+                auth.requestMatchers("/user").permitAll().requestMatchers("/auth/login").permitAll().requestMatchers(SWAGGER_LIST).permitAll();
                 auth.anyRequest().authenticated();
             }
         ).addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
