@@ -8,19 +8,22 @@ import com.rpg.server.modules.character.DTO.AttributesDTO;
 import com.rpg.server.modules.character.DTO.EquipmentDTO;
 import com.rpg.server.modules.character.DTO.SpecialAbilities;
 import com.rpg.server.modules.character.DTO.SpellDTO;
+import com.rpg.server.modules.user.model.UserModel;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -69,4 +72,11 @@ public class CharacterEntity {
     @ElementCollection
     @NotNull(message = "Special abilities cannot be null")
     private List<SpecialAbilities> specialAbilities;
+
+    @ManyToOne
+    @JoinColumn(name = "username",insertable = false, updatable = false)
+    private UserModel user;
+    
+    @Column(name = "username")
+    private String username;
 }
