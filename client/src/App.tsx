@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { RoutesApp } from './routes/routes'
 
 
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">hello</h1>
+     <RoutesApp/>
     </>
   )
 }
