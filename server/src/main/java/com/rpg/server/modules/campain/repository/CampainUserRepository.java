@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.rpg.server.modules.campain.model.CampainUserModel;
 
 public interface CampainUserRepository extends JpaRepository<CampainUserModel, UUID>{
-    
-    Optional<CampainUserModel> findByCampainIdAndUserId(UUID campainId,String userId);
+
+    Optional<CampainUserModel> findByCampainId(UUID campainId);
+    void deleteByCampainId(UUID campainId);
+    Optional<CampainUserModel> findByUserId(String userId);
 
 }

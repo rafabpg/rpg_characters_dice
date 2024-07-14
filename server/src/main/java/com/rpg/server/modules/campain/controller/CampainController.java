@@ -9,9 +9,13 @@ import com.rpg.server.modules.campain.service.CampainService;
 import org.springframework.web.bind.annotation.RequestHeader;
 import jakarta.validation.Valid;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -34,5 +38,15 @@ public class CampainController {
         }
     }
     
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteById(@PathVariable UUID id) {
+        try {
+            this.campainService.deleteCampain(id);
+            return ResponseEntity.status(200).body("Delete Sucessful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
+        }
+    }
 
 }

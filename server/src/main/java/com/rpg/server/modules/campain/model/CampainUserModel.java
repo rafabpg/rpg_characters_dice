@@ -13,11 +13,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "campain_user")
 public class CampainUserModel {
 
@@ -35,7 +39,7 @@ public class CampainUserModel {
     @ManyToOne
     @JoinColumn(name = "username",insertable = false,updatable = false)
     private UserModel user;
-
+    
     @Column(name = "username")
     private String userId;
 

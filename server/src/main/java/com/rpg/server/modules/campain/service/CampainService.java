@@ -1,7 +1,10 @@
 package com.rpg.server.modules.campain.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rpg.server.exceptions.UserNotFound;
 import com.rpg.server.modules.campain.DTO.CampainRequestDTO;
@@ -38,6 +41,12 @@ public class CampainService {
             .userId(userId)
             .build());
         return campain;
+    }
+
+    @Transactional
+    public void deleteCampain(UUID id) {
+        this.campainUserRepository.deleteByCampainId(id);
+        this.campainRepository.deleteById(id);
     }
 
 }
