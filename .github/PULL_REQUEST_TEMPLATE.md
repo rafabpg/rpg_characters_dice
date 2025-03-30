@@ -1,27 +1,20 @@
 ---
 name: "📌 Pull Request"
 about: Submeter alterações para revisão
-title: "[TIPO]: Descrição resumida"
-labels: ""
-assignees: ""
+title: "Descrição resumida"
 ---
 
-### 🔗 **Issue Relacionada**  
-Resolve #123  
+### 🔗 **Vinculações Obrigatórias**
+- Resolve: #123 
 
-### 🛠️ **Alterações**  
-- [ ] Novo recurso  
-- [ ] Correção de bug  
-- [ ] Refatoração  
+### 📌 **Tipo de Mudança**
+- [ ] `feature` (Novo recurso)
+- [ ] `hotfix` (Correção urgente)
+- [ ] `bugfix` (Correção comum)
+- [ ] `refactor` (Melhoria interna)
+- [ ] `infra` (DevOps/Configuração)
 
-### ✅ **Checklist**  
-- [ ] Testes unitários passando  
-- [ ] Testes de aceitação criados (#456)  
-- [ ] Documentação atualizada  
-
-### 🖼️ **Screenshots (Opcional)**  
-| Antes | Depois |  
-|-------|--------|  
-| <img width="300" src="..."> | <img width="300" src="..."> |  
-
-### 📝 **Notas para Revisores**  
+### 🛠️ **Solução Implementada**
+```markdown
+1. **O que foi feito?**  
+   [Descrição técnica em 2-3 frases. Ex: "Implementado cache Redis para consultas frequentes"]
