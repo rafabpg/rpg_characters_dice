@@ -2,8 +2,7 @@
 name: "🐛 Bug Report"
 about: Relatar um comportamento inesperado ou erro
 title: "[BUG] Descrição concisa do problema"
-labels: "bug, needs-triage"
-assignees: ""
+labels: "bug"
 ---
 
 ### 🐞 **Descrição do Bug**  
@@ -15,7 +14,6 @@ assignees: ""
   - [ ] Grave (funcionalidade quebrada)  
   - [ ] Moderado (problema irritante)  
   - [ ] Pequeno (bug cosmético)  
-- **Usuários afetados**: [Todos/Específicos]  
 
 ### 🎯 **Passos para Reproduzir**  
 1. Ambiente:  
